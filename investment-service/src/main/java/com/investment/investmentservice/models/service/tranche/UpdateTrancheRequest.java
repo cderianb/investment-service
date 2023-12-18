@@ -1,8 +1,9 @@
 package com.investment.investmentservice.models.service.tranche;
 
 import com.investment.investmentservice.validations.annotations.tranche.TrancheIdExists;
-import com.investment.investmentservice.validations.annotations.tranche.TrancheNameUnique;
 import com.investment.investmentservice.validations.annotations.tranche.TrancheNotInvested;
+import com.investment.investmentservice.validations.annotations.tranche.TrancheUpdatedNameUnique;
+import com.investment.investmentservice.validations.datas.TrancheUpdatedNameUniqueData;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -11,22 +12,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.util.StringUtils;
 
-import java.math.BigDecimal;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-//@TrancheUpdatedNameUnique
-public class UpdateTrancheRequest {
+@TrancheUpdatedNameUnique
+public class UpdateTrancheRequest implements TrancheUpdatedNameUniqueData {
     @TrancheIdExists
     @TrancheNotInvested
     private Long id;
     @NotBlank
     private String name;
     private String annualInterestRate;
-    @Min(value = 0)
-    private Long amountAvailableForInvestment;
     @Min(value = 1)
     private Integer duration;
     @Min(value = 1)
@@ -37,6 +34,6 @@ public class UpdateTrancheRequest {
     private Long maximumInvestmentAmountPerInvestor;
 
     public String getName() {
-        return StringUtils.capitalize(name);
+        return StringUtils.capitalize(name.trim());
     }
 }

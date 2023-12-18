@@ -20,6 +20,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.math.BigDecimal;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -90,7 +91,6 @@ public class TrancheService {
                 .map(tranche -> {
                     tranche.setName(request.getName());
                     tranche.setAnnualInterestRate(new BigDecimal(request.getAnnualInterestRate()));
-                    tranche.setAmountAvailableForInvestment(request.getAmountAvailableForInvestment());
                     tranche.setDuration(request.getDuration());
                     tranche.setMaximumInvestmentAmount(request.getMaximumInvestmentAmount());
                     tranche.setMinimumInvestmentAmountPerInvestor(request.getMinimumInvestmentAmountPerInvestor());
@@ -146,15 +146,13 @@ public class TrancheService {
                 .sum();
         BigDecimal totalReceived = platformList.stream().map(Platform::getBorrowerReceive).reduce(BigDecimal.ZERO, BigDecimal::add);
         List<TrancheOverviewWebResponse.TrancheInvestor> investorList = platformList.stream()
-                .map(platform -> {
-                    return TrancheOverviewWebResponse.TrancheInvestor.builder()
-                            .investorId(platform.getInvestorId())
-                            .investorName(platform.getInvestor().getName())
-                            .amountInvested(platform.getAmountInvested())
-                            .platformStatus(platform.getStatus())
-                            .build();
-                })
-                .sorted((p1, p2) -> p1.getPlatformStatus().compareTo(p2.getPlatformStatus()))
+                .map(platform -> TrancheOverviewWebResponse.TrancheInvestor.builder()
+                        .investorId(platform.getInvestorId())
+                        .investorName(platform.getInvestor().getName())
+                        .amountInvested(platform.getAmountInvested())
+                        .platformStatus(platform.getStatus())
+                        .build())
+                .sorted(Comparator.comparing(TrancheOverviewWebResponse.TrancheInvestor::getPlatformStatus))
                 .collect(Collectors.toList());
 
         return TrancheOverviewWebResponse.builder()
