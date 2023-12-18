@@ -27,7 +27,7 @@ public class BorrowerController {
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public Mono<Response<Borrower>> postInvestor(@RequestBody CreateBorrowerWebRequest request) {
+    public Mono<Response<Borrower>> postBorrower(@RequestBody CreateBorrowerWebRequest request) {
         CreateBorrowerRequest createBorrowerRequest = CreateBorrowerRequest.builder()
                 .companyName(request.getCompanyName())
                 .picName(request.getPicName())
