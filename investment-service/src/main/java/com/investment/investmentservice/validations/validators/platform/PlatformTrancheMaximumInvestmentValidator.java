@@ -20,6 +20,7 @@ public class PlatformTrancheMaximumInvestmentValidator implements ConstraintVali
         return trancheRepository.findById(data.getTrancheId())
                 .map(tranche -> tranche.getAmountAvailableForInvestment().compareTo(data.getAmountInvested()) > 0
                                     || tranche.getAmountAvailableForInvestment().compareTo(data.getAmountInvested()) == 0)
+                .defaultIfEmpty(true)
                 .toFuture()
                 .get();
     }

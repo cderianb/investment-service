@@ -22,6 +22,7 @@ public class PlatformAmountInvestedCorrectValidator implements ConstraintValidat
                         tranche.getMinimumInvestmentAmountPerInvestor() <= data.getAmountInvested()
                         && tranche.getMaximumInvestmentAmountPerInvestor() >= data.getAmountInvested()
                 )
+                .defaultIfEmpty(true)
                 .toFuture()
                 .get();
     }

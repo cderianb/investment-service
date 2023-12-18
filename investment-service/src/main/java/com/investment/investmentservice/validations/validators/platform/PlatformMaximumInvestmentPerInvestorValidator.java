@@ -12,9 +12,7 @@ import lombok.SneakyThrows;
 import reactor.core.publisher.Mono;
 import reactor.util.function.Tuple2;
 
-import java.math.BigDecimal;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class PlatformMaximumInvestmentPerInvestorValidator implements ConstraintValidator<PlatformMaximumInvestmentPerInvestor, PlatformInvestData> {
 
@@ -32,6 +30,7 @@ public class PlatformMaximumInvestmentPerInvestorValidator implements Constraint
         return Mono.zip(trancheRepository.findById(data.getTrancheId()),
                         platformRepository.findByTrancheIdAndInvestorId(data.getTrancheId(), data.getInvestorId()).collectList())
                 .map(tuple2 -> validateInvestedAmount(tuple2, data.getAmountInvested()))
+                .defaultIfEmpty(true)
                 .toFuture()
                 .get();
     }
