@@ -1,0 +1,557 @@
+{
+	"info": {
+		"_postman_id": "a59654e2-bdcb-432a-a919-8a61100b7286",
+		"name": "Investment-services",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7832640"
+	},
+	"item": [
+		{
+			"name": "Investor",
+			"item": [
+				{
+					"name": "Create Investor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"kangaroo\",\r\n    \"name\":\"kangaroo\",\r\n    \"riskProfile\":\"High Risk\",\r\n    \"sourceOfFund\": \"Inheritance\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/investor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"investor"
+							]
+						},
+						"description": "\nThis endpoint allows you to create a new investor using a POST request to the specified URL. The request should include the investor's username, name, risk profile, and the source of funds.\n\n### Request Body\n- `username` (string): The username of the investor.\n- `name` (string): The name of the investor.\n- `riskProfile` (string): The risk profile of the investor.\n- `sourceOfFund` (string): The source of funds for the investor.\n\n### Response\nThe response to the request will have a status code of 400, indicating a bad request. The response body will include the following fields:\n- `statusCode` (number): The status code of the response.\n- `result` (boolean): The result of the request.\n- `data` (null): This field will be null in case of an error.\n- `errors.username` (array): An array containing any errors related to the username field.\n- `pagination` (null): This field will be null in case of an error.\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Investor List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/investor?page=1&pageSize=2&username=&name=christofer&sortBy=id&sortOrder=desc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"investor"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "2"
+								},
+								{
+									"key": "username",
+									"value": ""
+								},
+								{
+									"key": "name",
+									"value": "christofer"
+								},
+								{
+									"key": "sortBy",
+									"value": "id"
+								},
+								{
+									"key": "sortOrder",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Investor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/investor/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"investor",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Investor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"kangaroo 2\",\r\n    \"riskProfile\":\"Risk\",\r\n    \"sourceOfFund\": \"Salary\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/investor/19",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"investor",
+								"19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Investor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/investor/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"investor",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Investor Overview",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/investor/5/overview",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"investor",
+								"5",
+								"overview"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Borrower",
+			"item": [
+				{
+					"name": "Create Borrower",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"companyName\":\"Hungry Jack\",\r\n    \"picName\":\"James McLamore\",\r\n    \"phone\":\"123456789112351\",\r\n    \"business\":\"Food n Beverages\",\r\n    \"address\":\"Australia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/borrower",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"borrower"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Borrower List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/borrower?page=1&pageSize=20&companyName=&picName=&business=&sortBy=created_date&sortOrder=desc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"borrower"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "20"
+								},
+								{
+									"key": "companyName",
+									"value": ""
+								},
+								{
+									"key": "picName",
+									"value": ""
+								},
+								{
+									"key": "business",
+									"value": ""
+								},
+								{
+									"key": "sortBy",
+									"value": "created_date"
+								},
+								{
+									"key": "sortOrder",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Borrower",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/borrower/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"borrower",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Borrower",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"companyName\": \"Burger King\",\r\n    \"picName\": \"James McLamore\",\r\n    \"phone\": \"454588\",\r\n    \"business\": \"Food n Beverages\",\r\n    \"address\": \"US\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/borrower/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"borrower",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Borrower",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/borrower/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"borrower",
+								"9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tranche",
+			"item": [
+				{
+					"name": "Create Tranche",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Whooper 4\",\r\n    \"borrowerId\":8,\r\n    \"annualInterestRate\":4.5,\r\n    \"amountAvailableForInvestment\":1,\r\n    \"duration\":24,\r\n    \"maximumInvestmentAmount\":1000000000,\r\n    \"minimumInvestmentAmountPerInvestor\":100000,\r\n    \"maximumInvestmentAmountPerInvestor\":1000000000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tranche",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tranche"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Tranche",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/tranche/20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tranche",
+								"20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Tranche List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/tranche?name=&company=burger&page=1&pageSize=20&sortBy=created_date&sortOrder=desc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tranche"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": ""
+								},
+								{
+									"key": "company",
+									"value": "burger"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "20"
+								},
+								{
+									"key": "sortBy",
+									"value": "created_date"
+								},
+								{
+									"key": "sortOrder",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Tranche",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Whooper 3\",\r\n    \"annualInterestRate\": 0.02,\r\n    \"duration\": 24,\r\n    \"maximumInvestmentAmount\": 1000000,\r\n    \"minimumInvestmentAmountPerInvestor\": 100000,\r\n    \"maximumInvestmentAmountPerInvestor\": 500000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tranche/20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tranche",
+								"20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Tranche",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/tranche/1556",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tranche",
+								"1556"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Tranche Overview",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/tranche/15/overview",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tranche",
+								"15",
+								"overview"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Platform",
+			"item": [
+				{
+					"name": "Platform Invest",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"investorId\":5,\r\n    \"trancheId\":21,\r\n    \"amountInvested\":100000000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/platform/_invest",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"platform",
+								"_invest"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Repayment",
+			"item": [
+				{
+					"name": "Repayment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/repayment/_monthly-repayment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"repayment",
+								"_monthly-repayment"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

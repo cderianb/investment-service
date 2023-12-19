@@ -14,6 +14,5 @@ import lombok.NoArgsConstructor;
 public class DeleteInvestorRequest {
     @InvestorIdExists
     @InvestorNotInvesting
-    //@InvestorNotInUse
     private Long id;
 }
