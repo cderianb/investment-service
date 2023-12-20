@@ -8,6 +8,8 @@ import jakarta.validation.ConstraintValidatorContext;
 import lombok.SneakyThrows;
 import reactor.core.publisher.Mono;
 
+import java.util.Objects;
+
 public class TrancheUpdatedNameUniqueValidator implements ConstraintValidator<TrancheUpdatedNameUnique, TrancheUpdatedNameUniqueData> {
     private final TrancheRepository trancheRepository;
 
@@ -19,12 +21,14 @@ public class TrancheUpdatedNameUniqueValidator implements ConstraintValidator<Tr
     @SneakyThrows
     public boolean isValid(TrancheUpdatedNameUniqueData data, ConstraintValidatorContext constraintValidatorContext) {
         return !trancheRepository.findById(data.getId())
+                .filter(Objects::nonNull)
                 .flatMap(tranche -> {
                     if(tranche.getName().equals(data.getName())){
                         return Mono.just(false);
                     }
                     return trancheRepository.existsByNameAndBorrowerId(data.getName(), tranche.getBorrowerId());
                 })
+                .defaultIfEmpty(false)
                 .toFuture()
                 .get();
     }
