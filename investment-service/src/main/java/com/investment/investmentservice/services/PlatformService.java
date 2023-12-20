@@ -4,8 +4,8 @@ import com.investment.investmentservice.configurations.PlatformConfiguration;
 import com.investment.investmentservice.entities.Platform;
 import com.investment.investmentservice.entities.Tranche;
 import com.investment.investmentservice.models.commons.enums.PlatformStatus;
+import com.investment.investmentservice.models.service.platform.GetPlatformRequest;
 import com.investment.investmentservice.models.service.platform.PlatformInvestRequest;
-import com.investment.investmentservice.repositories.InvestorRepository;
 import com.investment.investmentservice.repositories.PlatformRepository;
 import com.investment.investmentservice.repositories.TrancheRepository;
 import lombok.AllArgsConstructor;
@@ -23,7 +23,6 @@ import java.util.Calendar;
 public class PlatformService {
     private final PlatformRepository platformRepository;
     private final TrancheRepository trancheRepository;
-    private final InvestorRepository investorRepository;
 
     private final PlatformConfiguration platformConfiguration;
 
@@ -32,6 +31,10 @@ public class PlatformService {
                 .flatMap(tranche -> updateTranche(request, tranche))
                 .map(tranche -> constructPlatform(request, tranche))
                 .flatMap(platformRepository::save);
+    }
+
+    public Mono<Platform> getPlatform(GetPlatformRequest request){
+        return platformRepository.findById(request.getId());
     }
 
     private Mono<Tranche> updateTranche(PlatformInvestRequest request, Tranche tranche){

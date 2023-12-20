@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"kangaroo\",\r\n    \"name\":\"kangaroo\",\r\n    \"riskProfile\":\"High Risk\",\r\n    \"sourceOfFund\": \"Inheritance\"\r\n}",
+							"raw": "{\r\n    \"username\":\"kangaroo1\",\r\n    \"name\":\"kangaroo\",\r\n    \"riskProfile\":\"High Risk\",\r\n    \"sourceOfFund\": \"Inheritance\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -34,7 +34,7 @@
 								"investor"
 							]
 						},
-						"description": "\nThis endpoint allows you to create a new investor using a POST request to the specified URL. The request should include the investor's username, name, risk profile, and the source of funds.\n\n### Request Body\n- `username` (string): The username of the investor.\n- `name` (string): The name of the investor.\n- `riskProfile` (string): The risk profile of the investor.\n- `sourceOfFund` (string): The source of funds for the investor.\n\n### Response\nThe response to the request will have a status code of 400, indicating a bad request. The response body will include the following fields:\n- `statusCode` (number): The status code of the response.\n- `result` (boolean): The result of the request.\n- `data` (null): This field will be null in case of an error.\n- `errors.username` (array): An array containing any errors related to the username field.\n- `pagination` (null): This field will be null in case of an error.\n\n"
+						"description": "This endpoint allows you to create a new investor using a POST request to the specified URL. The request should include the investor's username, name, risk profile, and the source of funds.\n\n### Request Body\n\n- `username` (string): The username of the investor.\n- `name` (string): The name of the investor.\n- `riskProfile` (string): The risk profile of the investor.\n- `sourceOfFund` (string): The source of funds for the investor.\n    \n\n### Response\n\nThe response to the request will have a status code of 400, indicating a bad request. The response body will include the following fields:\n\n- `statusCode` (number): The status code of the response.\n- `result` (boolean): The result of the request.\n- `data` (null): This field will be null in case of an error.\n- `errors.username` (array): An array containing any errors related to the username field.\n- `pagination` (null): This field will be null in case of an error."
 					},
 					"response": []
 				},
@@ -336,7 +336,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"Whooper 4\",\r\n    \"borrowerId\":8,\r\n    \"annualInterestRate\":4.5,\r\n    \"amountAvailableForInvestment\":1,\r\n    \"duration\":24,\r\n    \"maximumInvestmentAmount\":1000000000,\r\n    \"minimumInvestmentAmountPerInvestor\":100000,\r\n    \"maximumInvestmentAmountPerInvestor\":1000000000\r\n}",
+							"raw": "{\r\n    \"name\":\"Whooper 5\",\r\n    \"borrowerId\":8,\r\n    \"annualInterestRate\":4.5,\r\n    \"amountAvailableForInvestment\":1,\r\n    \"duration\":24,\r\n    \"maximumInvestmentAmount\":1000000000,\r\n    \"minimumInvestmentAmountPerInvestor\":100000,\r\n    \"maximumInvestmentAmountPerInvestor\":1000000000\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -363,7 +363,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/tranche/20",
+							"raw": "http://localhost:8080/tranche/21",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -371,7 +371,7 @@
 							"port": "8080",
 							"path": [
 								"tranche",
-								"20"
+								"21"
 							]
 						}
 					},
@@ -429,7 +429,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Whooper 3\",\r\n    \"annualInterestRate\": 0.02,\r\n    \"duration\": 24,\r\n    \"maximumInvestmentAmount\": 1000000,\r\n    \"minimumInvestmentAmountPerInvestor\": 100000,\r\n    \"maximumInvestmentAmountPerInvestor\": 500000\r\n}",
+							"raw": "{\r\n    \"name\": \"Whooper 4\",\r\n    \"annualInterestRate\": 0.02,\r\n    \"duration\": 24,\r\n    \"maximumInvestmentAmount\": 1000000,\r\n    \"minimumInvestmentAmountPerInvestor\": 100000,\r\n    \"maximumInvestmentAmountPerInvestor\": 500000\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -437,7 +437,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/tranche/20",
+							"raw": "http://localhost:8080/tranche/19",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -445,7 +445,7 @@
 							"port": "8080",
 							"path": [
 								"tranche",
-								"20"
+								"19"
 							]
 						}
 					},
@@ -504,7 +504,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"investorId\":5,\r\n    \"trancheId\":21,\r\n    \"amountInvested\":100000000\r\n}",
+							"raw": "{\r\n    \"investorId\":8,\r\n    \"trancheId\":19,\r\n    \"amountInvested\":500000\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -525,6 +525,38 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get Platform",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"investorId\":6,\r\n    \"trancheId\":19,\r\n    \"amountInvested\":500000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/platform/52",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"platform",
+								"52"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -532,7 +564,7 @@
 			"name": "Repayment",
 			"item": [
 				{
-					"name": "Repayment",
+					"name": "Monthly Repayment",
 					"request": {
 						"method": "POST",
 						"header": [],

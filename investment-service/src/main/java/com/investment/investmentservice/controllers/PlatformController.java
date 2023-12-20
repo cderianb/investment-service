@@ -3,6 +3,7 @@ package com.investment.investmentservice.controllers;
 import com.investment.investmentservice.entities.Platform;
 import com.investment.investmentservice.helpers.ResponseHelper;
 import com.investment.investmentservice.helpers.ValidationHelper;
+import com.investment.investmentservice.models.service.platform.GetPlatformRequest;
 import com.investment.investmentservice.models.service.platform.PlatformInvestRequest;
 import com.investment.investmentservice.models.web.requests.platform.PlatformInvestWebRequest;
 import com.investment.investmentservice.models.web.responses.Response;
@@ -32,6 +33,15 @@ public class PlatformController {
                 .build();
         validationHelper.validate(platformInvestRequest);
         return platformService.invest(platformInvestRequest)
+                .map(ResponseHelper::ok);
+    }
+
+    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Mono<Response<Platform>> getPlatform(@PathVariable Long id){
+        GetPlatformRequest getPlatformRequest = GetPlatformRequest.builder()
+                .id(id)
+                .build();
+        return platformService.getPlatform(getPlatformRequest)
                 .map(ResponseHelper::ok);
     }
 }

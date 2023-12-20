@@ -1,5 +1,6 @@
 package com.investment.investmentservice.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.investment.investmentservice.models.commons.enums.PlatformStatus;
 import lombok.*;
 import org.springframework.data.annotation.Transient;
@@ -46,8 +47,10 @@ public class Platform extends BaseEntity{
     private BigDecimal borrowerReceive;
 
     @Transient
+    @JsonIgnore
     private Investor investor;
 
     @Transient
+    @JsonIgnore
     private Tranche tranche;
 }
