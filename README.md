@@ -30,12 +30,12 @@ This section will guide you through the installation and setup process to get th
 
 ### 2. Configure the Database:
 
-- Open the application's configuration file `/src/main/resources/application.properties`.
+- Open the application's configuration file `/investment-service/src/main/resources/application.properties`.
 - Update the database connection settings to match your PostgreSQL database instance.
   - spring.r2dbc.url=r2dbc:postgresql://\<server>:\<port>/\<database_name>
   - spring.r2dbc.username=\<username>
   - spring.r2dbc.password=\<password>
-- Run the database migrations to initialize required tables at `/src/main/resources/migrations/Initialize.sql`
+- Run the database migrations to initialize required tables at `/investment-service/src/main/resources/migrations/Initialize.sql`
   
 ### 3. Use the application:
-To use the application or APIs, navigate to `docs/apis/` to look at the api specification or navigate to `docs/apis/postman-collection `and use postman to import the api collection
+To use the application or APIs, navigate to `/docs/apis/` to look at the api specification or navigate to `/docs/apis/postman-collection `and use postman to import the api collection
